@@ -24,8 +24,17 @@ namespace Tetris
             /*Square square = new Square(5, 5, '*');
             square.Draw();*/
 
-            Stick stick = new Stick(5, 3, '*');
-            stick.Draw();
+            /*Stick stick = new Stick(5, 3, '*');
+            stick.Draw();*/
+
+            Figure[] figures = new Figure[2];
+            figures[0] = new Square(5, 5, '*');
+            figures[1] = new Stick(10, 3, '*');
+            
+            foreach (Figure figure in figures)
+            {
+                figure.Draw();
+            }
 
 
             // только для разработки
