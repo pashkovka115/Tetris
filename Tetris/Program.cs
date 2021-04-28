@@ -10,7 +10,7 @@ namespace Tetris
             // что бы убрать полосы прокрутки
             Console.SetBufferSize(40, 30);
 
-            Point p1 = new Point(2, 3, '*');
+            /*Point p1 = new Point(2, 3, '*');
             p1.Draw();
 
             Point p2 = new Point() 
@@ -19,14 +19,17 @@ namespace Tetris
                 y = 5,
                 c = '*'
             };
-            p2.Draw();
+            p2.Draw();*/
 
-            Square square = new Square(10, 20, '*');
-            square.Draw();
+            /*Square square = new Square(5, 5, '*');
+            square.Draw();*/
+
+            Stick stick = new Stick(5, 3, '*');
+            stick.Draw();
 
 
             // только для разработки
-            Console.ReadLine();
+            // Console.ReadLine();
         }
     }
 }
