@@ -2,7 +2,8 @@
 {
     public abstract class Figure
     {
-        protected Point[] points = new Point[4];
+        const int LENGHT = 4;
+        protected Point[] points = new Point[LENGHT];
         
         
         public void Draw()
@@ -23,7 +24,7 @@
         }
 
 
-        public void Move(Direction dir)
+        /*public void Move(Direction dir)
         {
             Hide();
             foreach (Point point in points)
@@ -31,6 +32,53 @@
                 point.Move(dir);
             }
             Draw();
+        }*/
+        
+        
+        public void Move(Point[] pList, Direction dir)
+        {
+            foreach (Point point in pList)
+            {
+                point.Move(dir);
+            }
+        }
+
+        
+        public void TryMove(Direction dir)
+        {
+            Hide();
+            var clone = Clone();
+            Move(clone, dir);
+
+            if (VerifyPosition(clone))
+            {
+                points = clone;
+            }
+            Draw();
+        }
+
+        private bool VerifyPosition(Point[] pList)
+        {
+            foreach (var p in pList)
+            {
+                if (p.x < 0 || p.y < 0 || p.x >= 39 || p.y >= 29)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private Point[] Clone()
+        {
+            var newPoints = new Point[LENGHT];
+            for (int i = 0; i < LENGHT; i++)
+            {
+                newPoints[i] = new Point(points[i]);
+            }
+
+            return newPoints;
         }
 
 

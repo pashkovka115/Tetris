@@ -31,21 +31,21 @@ namespace Tetris
             switch (key.Key)
             {
                 case ConsoleKey.LeftArrow:
-                    currentFigure.Move(Direction.LEFT);
+                    currentFigure.TryMove(Direction.LEFT);
                     break;
                 
                 case ConsoleKey.RightArrow:
-                    currentFigure.Move(Direction.RIGHT);
+                    currentFigure.TryMove(Direction.RIGHT);
                     break;
                 
                 case ConsoleKey.DownArrow:
-                    currentFigure.Move(Direction.DOWN);
+                    currentFigure.TryMove(Direction.DOWN);
                     break;
             }
         }
 
 
-        static void FigureFall(ref Figure figure, FigureGenerator generator)
+        /*static void FigureFall(ref Figure figure, FigureGenerator generator)
         {
             figure = generator.GetNewFigure();
             
@@ -57,6 +57,6 @@ namespace Tetris
                 figure.Move(Direction.DOWN);
             }
             figure.Hide();
-        }
+        }*/
     }
 }
