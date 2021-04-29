@@ -10,6 +10,8 @@ namespace Tetris
             Console.SetWindowSize(40, 30);
             // что бы убрать полосы прокрутки
             Console.SetBufferSize(40, 30);
+            
+            
 
             /*Point p1 = new Point(2, 3, '*');
             p1.Draw();
@@ -31,7 +33,7 @@ namespace Tetris
             square.Hide();
             square.Rotate();*/
 
-            Stick stick = new Stick(10, 5, '*');
+            /*Stick stick = new Stick(10, 5, '*');
             stick.Draw();
             Thread.Sleep(1000);
             
@@ -57,8 +59,35 @@ namespace Tetris
             
             stick.Hide();
             stick.Rotate();
-            stick.Draw();
+            stick.Draw();*/
+
+
+            /*FigureGenerator generator = new FigureGenerator(20, 0, '*');
+            for (int j = 0; j < 10; j++)
+            {
+                Figure s = generator.GetNewFigure();
+                for (int i = 0; i < 10; i++)
+                {
+                    s.Draw();
+                    Thread.Sleep(500);
+                    s.Hide();
+                    s.Move(Direction.DOWN);
+                }
+                s.Hide();
+            }*/
             
+            
+            /*Figure b = generator.GetNewFigure();
+            for (int i = 0; i < 10; i++)
+            {
+                b.Draw();
+                Thread.Sleep(500);
+                b.Hide();
+                b.Move(Direction.DOWN);
+            }
+            b.Hide();*/
+            
+
 
             /*Figure[] figures = new Figure[2];
             figures[0] = new Square(5, 5, '*');
@@ -69,9 +98,29 @@ namespace Tetris
                 figure.Draw();
             }*/
 
+            FigureGenerator generator = new FigureGenerator(20, 0, '*');
+            Figure s = null;
+            
+            while (true)
+            {
+                FigureFall(s, generator);
+                s.Draw();
+            }
+        }
 
-            // только для разработки
-            // Console.ReadLine();
+
+        static void FigureFall(Figure figure, FigureGenerator generator)
+        {
+            figure = generator.GetNewFigure();
+            
+            for (int i = 0; i < 15; i++)
+            {
+                figure.Draw();
+                Thread.Sleep(200);
+                figure.Hide();
+                figure.Move(Direction.DOWN);
+            }
+            figure.Hide();
         }
     }
 }
