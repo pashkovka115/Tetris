@@ -18,12 +18,21 @@ namespace Tetris
             c = sym;
         }
 
+        public Point(Point point)
+        {
+            x = point.x;
+            y = point.y;
+            c = point.c;
+        }
+        
+        
         public Point() { }
 
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
             Console.Write(c);
+            Console.SetCursorPosition(0, 0);
         }
 
         internal void Move(Direction dir)
