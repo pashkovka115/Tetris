@@ -7,7 +7,7 @@ namespace Tetris
     {
         static void Main(string[] args)
         {
-            Console.SetWindowSize(40, 30);
+            Console.SetWindowSize(Field.WIDHT, Field.HIGHT);
             // что бы убрать полосы прокрутки
             Console.SetBufferSize(40, 30);
             
@@ -40,6 +40,10 @@ namespace Tetris
                 
                 case ConsoleKey.DownArrow:
                     currentFigure.TryMove(Direction.DOWN);
+                    break;
+                
+                case ConsoleKey.Spacebar:
+                    currentFigure.TryRotate();
                     break;
             }
         }

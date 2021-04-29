@@ -57,11 +57,25 @@
             Draw();
         }
 
+        
+        public void TryRotate()
+        {
+            Hide();
+            var clone = Clone();
+            Rotate(clone);
+
+            if (VerifyPosition(clone))
+            {
+                points = clone;
+            }
+            Draw();
+        }
+
         private bool VerifyPosition(Point[] pList)
         {
             foreach (var p in pList)
             {
-                if (p.x < 0 || p.y < 0 || p.x >= 39 || p.y >= 29)
+                if (p.x < 0 || p.y < 0 || p.x >= Field.WIDHT - 1 || p.y >= Field.HIGHT - 1)
                 {
                     return false;
                 }
@@ -82,6 +96,6 @@
         }
 
 
-        public abstract void Rotate();
+        public abstract void Rotate(Point[] pList);
     }
 }
