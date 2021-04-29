@@ -25,10 +25,12 @@
 
         public void Move(Direction dir)
         {
+            Hide();
             foreach (Point point in points)
             {
                 point.Move(dir);
             }
+            Draw();
         }
 
 
