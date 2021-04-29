@@ -12,5 +12,23 @@
                 point.Draw();
             }
         }
+
+
+        public void Hide()
+        {
+            foreach (Point point in points)
+            {
+                point.Hide();
+            }
+        }
+
+
+        public void Move(Direction dir)
+        {
+            foreach (Point point in points)
+            {
+                point.Move(dir);
+            }
+        }
     }
 }

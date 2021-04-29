@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Tetris
 {
@@ -21,20 +22,24 @@ namespace Tetris
             };
             p2.Draw();*/
 
-            /*Square square = new Square(5, 5, '*');
-            square.Draw();*/
+            Square square = new Square(5, 5, '*');
+            square.Draw();
+            Thread.Sleep(1000);
+            square.Hide();
+            square.Move(Direction.LEFT);
+            square.Draw();
 
             /*Stick stick = new Stick(5, 3, '*');
             stick.Draw();*/
 
-            Figure[] figures = new Figure[2];
+            /*Figure[] figures = new Figure[2];
             figures[0] = new Square(5, 5, '*');
             figures[1] = new Stick(10, 3, '*');
             
             foreach (Figure figure in figures)
             {
                 figure.Draw();
-            }
+            }*/
 
 
             // только для разработки
