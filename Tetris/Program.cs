@@ -22,15 +22,43 @@ namespace Tetris
             };
             p2.Draw();*/
 
-            Square square = new Square(5, 5, '*');
+            /*Square square = new Square(5, 5, '*');
             square.Draw();
             Thread.Sleep(1000);
             square.Hide();
             square.Move(Direction.LEFT);
             square.Draw();
+            square.Hide();
+            square.Rotate();*/
 
-            /*Stick stick = new Stick(5, 3, '*');
-            stick.Draw();*/
+            Stick stick = new Stick(10, 5, '*');
+            stick.Draw();
+            Thread.Sleep(1000);
+            
+            stick.Hide();
+            stick.Rotate();
+            stick.Draw();
+            Thread.Sleep(1000);
+            
+            stick.Hide();
+            stick.Move(Direction.LEFT);
+            stick.Draw();
+            Thread.Sleep(1000);
+            
+            stick.Hide();
+            stick.Move(Direction.RIGHT);
+            stick.Draw();
+            Thread.Sleep(1000);
+            
+            stick.Hide();
+            stick.Move(Direction.RIGHT);
+            stick.Draw();
+            Thread.Sleep(1000);
+            
+            stick.Hide();
+            stick.Rotate();
+            stick.Draw();
+            
 
             /*Figure[] figures = new Figure[2];
             figures[0] = new Square(5, 5, '*');

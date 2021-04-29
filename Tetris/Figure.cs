@@ -1,6 +1,6 @@
 ﻿namespace Tetris
 {
-    public class Figure
+    public abstract class Figure
     {
         protected Point[] points = new Point[4];
         
@@ -30,5 +30,8 @@
                 point.Move(dir);
             }
         }
+
+
+        public abstract void Rotate();
     }
 }
