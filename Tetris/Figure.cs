@@ -75,7 +75,7 @@
         {
             foreach (var p in pList)
             {
-                if (p.x < 0 || p.y < 0 || p.x >= Field.WIDHT - 1 || p.y >= Field.HIGHT - 1)
+                if (p.x < 0 || p.y < 0 || p.x >= Field.Width - 1 || p.y >= Field.Hight - 1)
                 {
                     return false;
                 }

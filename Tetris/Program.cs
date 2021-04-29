@@ -7,9 +7,11 @@ namespace Tetris
     {
         static void Main(string[] args)
         {
-            Console.SetWindowSize(Field.WIDHT, Field.HIGHT);
+            Console.SetWindowSize(Field.Width, Field.Hight);
             // что бы убрать полосы прокрутки
-            Console.SetBufferSize(40, 30);
+            Console.SetBufferSize(Field.Width, Field.Hight);
+
+            Field.Width = 20;
             
 
             FigureGenerator generator = new FigureGenerator(20, 0, '*');
