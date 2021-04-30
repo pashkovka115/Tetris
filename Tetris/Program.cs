@@ -5,6 +5,9 @@ namespace Tetris
 {
     class Program
     {
+        private static FigureGenerator _generator;
+        
+        
         static void Main(string[] args)
         {
             Console.SetWindowSize(Field.Width, Field.Hight);
@@ -13,8 +16,8 @@ namespace Tetris
 
             // Field.Width = 20;
 
-            FigureGenerator generator = new FigureGenerator(20, 0, '*');
-            Figure currentFigure = generator.GetNewFigure();
+            _generator = new FigureGenerator(Field.Width / 2, 0, Drawer.DEFAULT_SYMBOL);
+            Figure currentFigure = _generator.GetNewFigure();
 
             while (true)
             {
@@ -33,9 +36,9 @@ namespace Tetris
         {
             if (result == Result.HeapStrike || result == Result.DownBorderStrike)
             {
-                FigureGenerator generator = new FigureGenerator(20, 0, '*');
                 Field.AddFigure(currentFigure);
-                currentFigure = generator.GetNewFigure();
+                Field.TryDeleteLines();
+                currentFigure = _generator.GetNewFigure();
                 return true;
             }
 
@@ -61,20 +64,5 @@ namespace Tetris
 
             return Result.Success;
         }
-
-
-        /*static void FigureFall(ref Figure figure, FigureGenerator generator)
-        {
-            figure = generator.GetNewFigure();
-            
-            for (int i = 0; i < 15; i++)
-            {
-                figure.Draw();
-                Thread.Sleep(200);
-                figure.Hide();
-                figure.Move(Direction.DOWN);
-            }
-            figure.Hide();
-        }*/
     }
 }
