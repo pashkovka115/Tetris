@@ -4,8 +4,8 @@
     {
         const int LENGHT = 4;
         protected Point[] points = new Point[LENGHT];
-        
-        
+
+
         public void Draw()
         {
             foreach (Point point in points)
@@ -33,8 +33,8 @@
             }
             Draw();
         }*/
-        
-        
+
+
         public void Move(Point[] pList, Direction dir)
         {
             foreach (Point point in pList)
@@ -43,7 +43,7 @@
             }
         }
 
-        
+
         public void TryMove(Direction dir)
         {
             Hide();
@@ -54,10 +54,11 @@
             {
                 points = clone;
             }
+
             Draw();
         }
 
-        
+
         public void TryRotate()
         {
             Hide();
@@ -68,6 +69,7 @@
             {
                 points = clone;
             }
+
             Draw();
         }
 

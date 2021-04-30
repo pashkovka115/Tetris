@@ -11,12 +11,11 @@ namespace Tetris
             // что бы убрать полосы прокрутки
             Console.SetBufferSize(Field.Width, Field.Hight);
 
-            Field.Width = 20;
-            
+            // Field.Width = 20;
 
             FigureGenerator generator = new FigureGenerator(20, 0, '*');
             Figure currentFigure = generator.GetNewFigure();
-            
+
             while (true)
             {
                 // Если была нажата какая либо клавиша
@@ -35,15 +34,15 @@ namespace Tetris
                 case ConsoleKey.LeftArrow:
                     currentFigure.TryMove(Direction.LEFT);
                     break;
-                
+
                 case ConsoleKey.RightArrow:
                     currentFigure.TryMove(Direction.RIGHT);
                     break;
-                
+
                 case ConsoleKey.DownArrow:
                     currentFigure.TryMove(Direction.DOWN);
                     break;
-                
+
                 case ConsoleKey.Spacebar:
                     currentFigure.TryRotate();
                     break;

@@ -8,8 +8,8 @@ namespace Tetris
         private int _y;
         private char _c;
         private Random _rand = new Random();
-        
-        
+
+
         public FigureGenerator(int x, int y, char c)
         {
             _x = x;

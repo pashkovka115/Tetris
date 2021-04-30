@@ -9,10 +9,7 @@ namespace Tetris
 
         public static int Hight
         {
-            get
-            {
-                return _hight;
-            }
+            get { return _hight; }
             set
             {
                 _hight = value;
@@ -20,13 +17,10 @@ namespace Tetris
                 Console.SetBufferSize(_width, Field._hight);
             }
         }
-        
+
         public static int Width
         {
-            get
-            {
-                return _width;
-            }
+            get { return _width; }
             set
             {
                 _width = value;

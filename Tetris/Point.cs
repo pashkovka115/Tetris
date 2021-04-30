@@ -24,9 +24,11 @@ namespace Tetris
             y = point.y;
             c = point.c;
         }
-        
-        
-        public Point() { }
+
+
+        public Point()
+        {
+        }
 
         public void Draw()
         {
@@ -42,11 +44,11 @@ namespace Tetris
                 case Direction.DOWN:
                     y += 1;
                     break;
-                
+
                 case Direction.LEFT:
                     x -= 1;
                     break;
-                
+
                 case Direction.RIGHT:
                     x += 1;
                     break;
