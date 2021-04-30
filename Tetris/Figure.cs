@@ -86,7 +86,7 @@
                     return Result.DownBorderStrike;
                 }
 
-                if (p.x >= Field.Width)
+                if (p.x >= Field.Width - 1 || p.x < 0)
                 {
                     return Result.BorderStrike;
                 }
