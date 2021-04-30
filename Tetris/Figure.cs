@@ -3,12 +3,12 @@
     public abstract class Figure
     {
         const int LENGHT = 4;
-        protected Point[] points = new Point[LENGHT];
+        public Point[] Points = new Point[LENGHT];
 
 
         public void Draw()
         {
-            foreach (Point point in points)
+            foreach (Point point in Points)
             {
                 point.Draw();
             }
@@ -17,7 +17,7 @@
 
         public void Hide()
         {
-            foreach (Point point in points)
+            foreach (Point point in Points)
             {
                 point.Hide();
             }
@@ -44,46 +44,60 @@
         }
 
 
-        public void TryMove(Direction dir)
+        public Result TryMove(Direction dir)
         {
             Hide();
             var clone = Clone();
             Move(clone, dir);
 
-            if (VerifyPosition(clone))
+            var result = VerifyPosition(clone);
+            if (result == Result.Success)
             {
-                points = clone;
+                Points = clone;
             }
-
             Draw();
+
+            return result;
         }
 
 
-        public void TryRotate()
+        public Result TryRotate()
         {
             Hide();
             var clone = Clone();
             Rotate(clone);
 
-            if (VerifyPosition(clone))
+            var result = VerifyPosition(clone);
+            if (result == Result.Success)
             {
-                points = clone;
+                Points = clone;
             }
-
             Draw();
+            
+            return result;
         }
 
-        private bool VerifyPosition(Point[] pList)
+        private Result VerifyPosition(Point[] pList)
         {
             foreach (var p in pList)
             {
-                if (p.x < 0 || p.y < 0 || p.x >= Field.Width - 1 || p.y >= Field.Hight - 1)
+                if (p.y >= Field.Hight)
                 {
-                    return false;
+                    return Result.DownBorderStrike;
+                }
+
+                if (p.x >= Field.Width)
+                {
+                    return Result.BorderStrike;
+                }
+
+                if (Field.CheckStrike(p))
+                {
+                    return Result.HeapStrike;
                 }
             }
 
-            return true;
+            return Result.Success;
         }
 
         private Point[] Clone()
@@ -91,7 +105,7 @@
             var newPoints = new Point[LENGHT];
             for (int i = 0; i < LENGHT; i++)
             {
-                newPoints[i] = new Point(points[i]);
+                newPoints[i] = new Point(Points[i]);
             }
 
             return newPoints;

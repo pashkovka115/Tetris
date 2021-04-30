@@ -30,16 +30,29 @@ namespace Tetris
         }
 
 
-        /*public static int GetWidth()
+        private static bool[][] _heap;
+
+        static Field()
         {
-            return _width; 
+            _heap = new bool[Hight][];
+            for (int i = 0; i < Hight; i++)
+            {
+                _heap[i] = new bool[Width];
+            }
         }
 
-        public static void SetWidth(int value)
+        public static bool CheckStrike(Point point)
         {
-            _width = value;
-            Console.SetWindowSize(_width, Field.HIGHT);
-            Console.SetBufferSize(_width, 30);
-        }*/
+            return _heap[point.x][point.y];
+        }
+
+
+        public static void AddFigure(Figure figure)
+        {
+            foreach (var point in figure.Points)
+            {
+                _heap[point.x][point.y] = true;
+            }
+        }
     }
 }

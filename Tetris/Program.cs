@@ -22,31 +22,44 @@ namespace Tetris
                 if (Console.KeyAvailable)
                 {
                     var key = Console.ReadKey();
-                    HandleKey(currentFigure, key);
+                    var result = HandleKey(currentFigure, key);
+                    ProcessResult(result, ref currentFigure);
                 }
             }
         }
 
-        private static void HandleKey(Figure currentFigure, ConsoleKeyInfo key)
+
+        private static bool ProcessResult(Result result, ref Figure currentFigure)
+        {
+            if (result == Result.HeapStrike || result == Result.DownBorderStrike)
+            {
+                FigureGenerator generator = new FigureGenerator(20, 0, '*');
+                Field.AddFigure(currentFigure);
+                currentFigure = generator.GetNewFigure();
+                return true;
+            }
+
+            return false;
+        }
+
+        private static Result HandleKey(Figure currentFigure, ConsoleKeyInfo key)
         {
             switch (key.Key)
             {
                 case ConsoleKey.LeftArrow:
-                    currentFigure.TryMove(Direction.LEFT);
-                    break;
+                    return currentFigure.TryMove(Direction.LEFT);
 
                 case ConsoleKey.RightArrow:
-                    currentFigure.TryMove(Direction.RIGHT);
-                    break;
+                    return currentFigure.TryMove(Direction.RIGHT);
 
                 case ConsoleKey.DownArrow:
-                    currentFigure.TryMove(Direction.DOWN);
-                    break;
+                    return currentFigure.TryMove(Direction.DOWN);
 
                 case ConsoleKey.Spacebar:
-                    currentFigure.TryRotate();
-                    break;
+                    return currentFigure.TryRotate();
             }
+
+            return Result.Success;
         }
 
 
